@@ -1,4 +1,4 @@
-name: root
+name: research
 channels:
   - defaults
   - pyviz/label/dev
