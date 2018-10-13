@@ -1,6 +1,8 @@
 
 FROM jupyter/base-notebook:1145fb1198b2
 
+USER root
+
 ENV NB_USER jovyan
 ENV NB_UID 1000
 ENV HOME /home/${NB_USER}
@@ -11,6 +13,7 @@ RUN adduser --disabled-password \
     ${NB_USER}
 
 # Make sure the contents of our repo are in ${HOME}
+USER ${NB_USER}
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
