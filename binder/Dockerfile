@@ -25,7 +25,7 @@ RUN /opt/conda/bin/jupyter labextension install @jupyter-widgets/jupyterlab-mana
                              jupyter-leaflet \
                              dask-labextension
 
-RUN source activate environment
+RUN source activate research
 
 # Specify the default command to run
 CMD ["jupyter", "notebook", "--ip", "0.0.0.0"]
