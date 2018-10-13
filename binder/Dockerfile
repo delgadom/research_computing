@@ -16,8 +16,7 @@ USER ${NB_USER}
 
 COPY binder/environment.yml ${HOME}
 
-RUN conda env create -f ${HOME}/environment.yml
-RUN conda clean --all
+RUN conda env create -f ${HOME}/environment.yml && conda clean --all
 
 RUN source activate research
 
