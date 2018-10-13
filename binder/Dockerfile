@@ -16,7 +16,7 @@ USER ${NB_USER}
 
 COPY binder/environment.yml ${HOME}
 
-RUN conda env create -y -f ${HOME}/environment.yml
+RUN conda env create -f ${HOME}/environment.yml
 
 RUN /opt/conda/bin/jupyter serverextension enable --py nbserverproxy --sys-prefix
 RUN /opt/conda/bin/jupyter labextension install @jupyter-widgets/jupyterlab-manager \
