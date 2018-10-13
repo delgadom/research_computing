@@ -1,5 +1,5 @@
 
-FROM jupyter/base-notebook:1145fb1198b2
+FROM jupyter/minimal-notebook:1145fb1198b2
 
 USER ${NB_USER}
 
