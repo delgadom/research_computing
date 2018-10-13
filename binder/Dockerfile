@@ -1,19 +1,14 @@
 
 FROM jupyter/base-notebook:1145fb1198b2
 
-USER root
+USER ${NB_USER}
 
 ENV NB_USER jovyan
 ENV NB_UID 1000
 ENV HOME /home/${NB_USER}
 
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
-
 # Make sure the contents of our repo are in ${HOME}
-USER ${NB_USER}
+
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
@@ -29,6 +24,8 @@ RUN /opt/conda/bin/jupyter labextension install @jupyter-widgets/jupyterlab-mana
                              @pyviz/jupyterlab_pyviz \
                              jupyter-leaflet \
                              dask-labextension
+
+RUN source activate environment
 
 # Specify the default command to run
 CMD ["jupyter", "notebook", "--ip", "0.0.0.0"]
