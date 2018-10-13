@@ -18,13 +18,6 @@ COPY binder/environment.yml ${HOME}
 
 RUN conda env create -f ${HOME}/environment.yml
 
-RUN /opt/conda/bin/jupyter serverextension enable --py nbserverproxy --sys-prefix
-RUN /opt/conda/bin/jupyter labextension install @jupyter-widgets/jupyterlab-manager \
-                             @jupyterlab/hub-extension \
-                             @pyviz/jupyterlab_pyviz \
-                             jupyter-leaflet \
-                             dask-labextension
-
 RUN source activate research
 
 # Specify the default command to run
